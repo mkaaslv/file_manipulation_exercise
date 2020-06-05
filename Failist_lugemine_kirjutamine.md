@@ -31,50 +31,50 @@ open() tagastab faili objekti (file object), millest (millesse) edasi saab luged
 Nüüd, kui fail sai avatud, saame hakata tegelema selle sisu lugemisega. Failist lugemine on võimalik järgmistel viisidel:
 
 - **read(size)** - loeb sisse size baiti (sümbolit) ning tagastab need. Juhul, kui size pole määratud, loeb terve faili sisu.
-```python
-file_object = open('example.txt', 'r')  # Avame faili lugemiseks
-print(file_object.read())  # Loeme terve faili sisu
+  ```python
+  file_object = open('example.txt', 'r')  # Avame faili lugemiseks
+  print(file_object.read())  # Loeme terve faili sisu
 
-file_object.seek(0)  # Tagasi faili algusesse (sellest on juttu allpool)
+  file_object.seek(0)  # Tagasi faili algusesse (sellest on juttu allpool)
 
-print(file_object.read(5))  # Loeme esimesed 5 baiti
-print(file_object.read(5))  # Loeme järgmised 5 baiti
+  print(file_object.read(5))  # Loeme esimesed 5 baiti
+  print(file_object.read(5))  # Loeme järgmised 5 baiti
 
-```
-Väljund:
-```python
-Hello, World!
-Have a nice day.
+  ```
+  Väljund:
+  ```python
+  Hello, World!
+  Have a nice day.
 
-Hello
-, Wor
-```
+  Hello
+  , Wor
+  ```
 
 - **readline(size)** - kui size pole määratud, tagastab ühe rea, liikudes ülevalt alla (ehk esimesel kutsel tagastab esimese rida, teisel teise jne kuni faili lõpuni). Vastasel juhul tagastab järgmised size baiti.
-```python
-file_object = open('example.txt', 'r')
+  ```python
+  file_object = open('example.txt', 'r')
 
-print(file_object.readline())
-print(file_object.readline(5))
-```
-Väljund:
-```python
-Hello, World!
-Have
-```
+  print(file_object.readline())
+  print(file_object.readline(5))
+  ```
+  Väljund:
+  ```python
+  Hello, World!
+  Have
+  ```
 
 - **readlines(hint)** - tagastab järjendi koos kõikide failis olevate ridadega. hint määrab, kui palju ridu tuleb järjendisse panna. Selle analoogiks võib kasutada ka list(file_object) kirjapilti, mis samuti tagastab järjendi koos kõikide ridadega.
-```python
-file_object = open('example.txt', 'r')
+  ```python
+  file_object = open('example.txt', 'r')
 
-print(file_object.readlines())
-```
-Väljund:
-```python
-['Hello, World!\n', 'Have a nice day.']
-```
+  print(file_object.readlines())
+  ```
+  Väljund:
+  ```python
+  ['Hello, World!\n', 'Have a nice day.']
+  ```
 
-####LISAKS
+#### LISAKS
 **Ridade itereerimine.** - kõiki ridu saab kätte ka tavalise itereerimise kaudu.
 ```python
 file_object = open('example.txt', 'r')
@@ -87,8 +87,31 @@ Hello, World!
 Have a nice day.
 ```
 
+
 ### Faili kirjutamine
-...
+Faili kirjutamist teostatakse meetodi write() abil. Meetod võtab vastu sõne, seega kui on vaja kirjutada näiteks arvu, peame seda alguses muutma sõneks.
+```python
+file_object = open('example.txt', 'w')  # Avame faili kirjutamiseks
+file_object.write('This is a new line.')
+file_object.close()  # Sulgeme faili (sellest on juttu allpool)
+```
+Meie example.txt fail näeb nüüd selline välja:
+```python
+This is a new line.
+```
+Nagu näha on kogu eelmine tekst kirjutatud üle uue tekstiga. See tuleneb sellest, et me kasutasime *w* ehk write režiimi. Selleks, et lisada teksti ilma kogu faili sisu üle kirjutamata, tuleb kasutada *a+* režiimi.
+```python
+file_object = open('example.txt', 'a+')
+
+file_object.write('\nThis is appended line.')
+file_object.close()
+```
+Erisümbol (string literal) **\n** ehk line break ehk reavahetus on selle jaoks, et meie lisatud tekst asuks uuel real. Faili sisu on nüüd:
+```python
+This is a new line.
+This is appended line.
+```
+
 
 ### Faili sulgemine
 ..
