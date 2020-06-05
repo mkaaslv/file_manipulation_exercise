@@ -142,26 +142,34 @@ True
 
 ## Ülesanne
 ### Kirjeldus
-Ülesandes **top_sales_finder** tuleb lugeda failist *data.csv* toodete hinna ja koguste kohta ning kirjutada osaandmeid ka uude faili.
+Ülesandes **top_sales_finder** tuleb lugeda failist **_data.csv_** toodete hinna ja koguste kohta ning kirjutada osa andmeid ka uude faili.
 
 ### Sisu
 Realiseerida tuleb järgmise funktsioonid:
+
 - **get_sales_dict(filename: str) -> dict**
-  Loeb failist korrastamata andmed ja tagastab sõnastiku iga toote kohta, kus võtmeks on toote id ning väärtuseks kogu müügitulu.
+   -Loeb failist korrastamata andmed ja tagastab sõnastiku iga toote kohta, kus võtmeks on toote id ning väärtuseks kogu müügitulu.
+   
 - **find_average_price(filename: str) -> int**
-  Arvutab failist kõigi toodete keskmise hinna.
+  -Arvutab failist kõigi toodete keskmise hinna.
+  
 - **find_average_quantity(filename: str) -> int**
-  Arvutab failist kõigi toodete keskmise koguse.
+  -Arvutab failist kõigi toodete keskmise koguse.
+  
 - **get_total_quantity(filename: str) -> int**
-  Arvutab failist toodete koguse.
+  -Arvutab failist toodete koguse.
+  
 - **get_total_price(filename: str) -> int**
-  Arvutab failist toodete kogusumma.
+  -Arvutab failist toodete kogusumma.
+  
 - **get_sales_above(price: int, sales_dict: dict) -> list**
   Leiab kogutud andmetest ainult tooted, mis on üle antud hinna.
+  
 - **get_certain_product_info(product_id, sales_dict: dict) -> str**
-  Leiab info otstitava toote kohta.
+  -Leiab info otstitava toote kohta.
+  
 - **find_top_most_profitable(top: int, sales_dict: dict, file_to_write: str) -> None**
-  Leiab esimesed top suurima müügituluga tooted ning kirjutab need üle teise faili [kahanemis järjekorras].
+  -Leiab esimesed top suurima müügituluga tooted ning kirjutab need üle teise faili [kahanemis järjekorras].
 
 
 ## Mall
