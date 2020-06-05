@@ -39,9 +39,6 @@ Nüüd, kui fail sai avatud, saame hakata tegelema selle sisu lugemisega. Failis
   ```python
   Hello, World!
   Have a nice day.
-
-  Hello
-  , Wor
   ```
 
 - **readline(size)** - kui size pole määratud, tagastab ühe rea, liikudes ülevalt alla (ehk esimesel kutsel tagastab esimese rida, teisel teise jne kuni faili lõpuni). Vastasel juhul tagastab järgmised size baiti.
