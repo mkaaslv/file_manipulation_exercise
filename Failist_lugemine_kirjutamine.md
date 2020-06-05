@@ -222,6 +222,7 @@ def get_total_quantity(filename: str) -> int:
     :param filename:
     :return:
     """
+    pass
 
 
 def get_total_price(filename: str) -> int:
@@ -231,6 +232,7 @@ def get_total_price(filename: str) -> int:
     :param filename:
     :return:
     """
+    pass
 
 
 def get_sales_above(price: int, sales_dict: dict) -> list:
@@ -251,6 +253,7 @@ def get_certain_product_info(product_id, sales_dict: dict) -> str:
     :param sales_dict:
     :return:
     """
+    pass
 
 
 def find_top_most_profitable(top: int, sales_dict: dict, file_to_write: str) -> None:
@@ -270,4 +273,5 @@ def find_top_most_profitable(top: int, sales_dict: dict, file_to_write: str) -> 
     :param sales_dict:
     :return:
     """
+    pass
 ```
