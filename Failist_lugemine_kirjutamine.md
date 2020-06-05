@@ -139,6 +139,8 @@ True
 - [Tekstifailist lugemine (PyDoc)](https://ained.ttu.ee/pydoc/read_from_file.html)
 - [Tekstifaili kirjutamine (PyDoc)](https://ained.ttu.ee/pydoc/write_to_file.html)
 - [Sõnastik(dict) (PyDoc)](https://ained.ttu.ee/pydoc/dict.html)
+- [Python Tutorial: File Objects - Reading and Writing to Files (Youtube)](https://www.youtube.com/watch?v=Uh2ebFW8OYM&t=875s)
+- [Python Tutorial: CSV Module - How to Read, Parse, and Write CSV Files (Youtube)](https://www.youtube.com/watch?v=q5uM4VKywbA)
 
 ## Ülesanne
 ### Kirjeldus
