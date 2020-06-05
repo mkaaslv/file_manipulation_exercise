@@ -197,7 +197,7 @@ def get_sales_dict(filename: str) -> dict:
 
 def find_average_price(filename: str) -> int:
     """
-    Find average products price. Round down to integer.
+    Find average products price. Round up to integer.
 
     :param filename:
     :return:
