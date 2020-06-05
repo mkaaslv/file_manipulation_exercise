@@ -34,12 +34,6 @@ Nüüd, kui fail sai avatud, saame hakata tegelema selle sisu lugemisega. Failis
   ```python
   file_object = open('example.txt', 'r')  # Avame faili lugemiseks
   print(file_object.read())  # Loeme terve faili sisu
-
-  file_object.seek(0)  # Tagasi faili algusesse (sellest on juttu allpool)
-
-  print(file_object.read(5))  # Loeme esimesed 5 baiti
-  print(file_object.read(5))  # Loeme järgmised 5 baiti
-
   ```
   Väljund:
   ```python
@@ -66,7 +60,6 @@ Nüüd, kui fail sai avatud, saame hakata tegelema selle sisu lugemisega. Failis
 - **readlines(hint)** - tagastab järjendi koos kõikide failis olevate ridadega. hint määrab, kui palju ridu tuleb järjendisse panna. Selle analoogiks võib kasutada ka list(file_object) kirjapilti, mis samuti tagastab järjendi koos kõikide ridadega.
   ```python
   file_object = open('example.txt', 'r')
-
   print(file_object.readlines())
   ```
   Väljund:
@@ -74,7 +67,7 @@ Nüüd, kui fail sai avatud, saame hakata tegelema selle sisu lugemisega. Failis
   ['Hello, World!\n', 'Have a nice day.']
   ```
 
-#### LISAKS
+#### LISAKS !
 **Ridade itereerimine.** - kõiki ridu saab kätte ka tavalise itereerimise kaudu.
 ```python
 file_object = open('example.txt', 'r')
@@ -89,13 +82,13 @@ Have a nice day.
 
 
 ### Faili kirjutamine
-Faili kirjutamist teostatakse meetodi write() abil. Meetod võtab vastu sõne, seega kui on vaja kirjutada näiteks arvu, peame seda alguses muutma sõneks.
+Faili kirjutamist teostatakse meetodi **write()** abil. Meetod võtab vastu sõne, seega kui on vaja kirjutada näiteks arvu, peame seda alguses muutma sõneks.
 ```python
 file_object = open('example.txt', 'w')  # Avame faili kirjutamiseks
 file_object.write('This is a new line.')
 file_object.close()  # Sulgeme faili (sellest on juttu allpool)
 ```
-Meie example.txt fail näeb nüüd selline välja:
+Meie *example.txt* fail näeb nüüd selline välja:
 ```python
 This is a new line.
 ```
@@ -114,7 +107,35 @@ This is appended line.
 
 
 ### Faili sulgemine
-..
+Kui avame faili, peame ka faili sulgema, kui oleme selle kasutamise lõpetanud! Seda saab teha käsitsi, kasutades meetodit **close()**. Kui jätame faili avatuks võib programmis tekkida vigu. 
+```python
+file_object = open('example.txt', 'r')  # Avame faili
+print(file_object.read(5))  # Loeme esimesed 5 baiti
+file_object.close()  # Sulgeme faili
+print(file_object.read())  # Proovime faili sisu lugeda (peaks tulema ValueError)
+```
+Väljund:
+```python
+This
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+ValueError: I/O operation on closed file.
+```
+Nagu näha, peale seda, kui fail suletakse, ei saa sellega enam midagi teha.
+
+#### LISAKS !
+Samuti võib kasutada spetsiaalset with kontekstihaldurit (context manager), mis paneb faili automaatselt kinni peale sellega töö lõpetamist.
+```python
+with open('example.txt', 'r') as file:
+    print(file.read())
+print(file.closed)
+```
+Väljund:
+```python
+This is a new line.
+This is appended line.
+True
+```
 
 ## Abistavad lingid
 
@@ -123,10 +144,28 @@ This is appended line.
 - [Sõnastik(dict) (PyDoc)](https://ained.ttu.ee/pydoc/dict.html)
 
 ## Ülesanne
-Selles ülesandes tuleb nii lugeda kui ka kirjutada faili...
+### Kirjeldus
+Ülesandes **top_sales_finder** tuleb lugeda failist *data.csv* toodete hinna ja koguste kohta ning kirjutada osaandmeid ka uude faili.
 
-## .csv fail
-...
+### Sisu
+Realiseerida tuleb järgmise funktsioonid:
+- **get_sales_dict(filename: str) -> dict**
+  Loeb failist korrastamata andmed ja tagastab sõnastiku iga toote kohta, kus võtmeks on toote id ning väärtuseks kogu müügitulu.
+- **find_average_price(filename: str) -> int**
+  Arvutab failist kõigi toodete keskmise hinna.
+- **find_average_quantity(filename: str) -> int**
+  Arvutab failist kõigi toodete keskmise koguse.
+- **get_total_quantity(filename: str) -> int**
+  Arvutab failist toodete koguse.
+- **get_total_price(filename: str) -> int**
+  Arvutab failist toodete kogusumma.
+- **get_sales_above(price: int, sales_dict: dict) -> list**
+  Leiab kogutud andmetest ainult tooted, mis on üle antud hinna.
+- **get_certain_product_info(product_id, sales_dict: dict) -> str**
+  Leiab info otstitava toote kohta.
+- **find_top_most_profitable(top: int, sales_dict: dict, file_to_write: str) -> None**
+  Leiab esimesed top suurima müügituluga tooted ning kirjutab need üle teise faili [kahanemis järjekorras].
+
 
 ## Mall
 ```python
