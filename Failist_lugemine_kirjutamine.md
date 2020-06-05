@@ -7,10 +7,35 @@ Enne, kui hakkame tegelema faili sisu lugemise ja töötlemisega, peame faili av
 ```python
   file_object = open('filename', 'mode')
 ```
-...
+
+- filename - tähistab faili nime koos tüübiga (extension). Meie näitefaili puhul oleks see 'example.txt', mitte ainult 'example'. On võimalik kasutada ka faili täispikka teekonna ('C:\directory\taltech\file.txt'). Täispikka teekonda on VAJA kasutada juhul kui fail ei ole samas kataloogis/kasutas kus su programm
+NB! Pyhtonis tähistab \ erisümboli algust. Antud näites oleks faili nimeks 'C:\directory altech\file.txt', kuna erisümbol \t tähistab TABi. Erisümbolite vältimiseks võib näiteks kasutada kahte kaldkriipsu 'C:\\directory\\taltech\\file.txt' või kasutada spetsiaalset flagi r'C:\directory\taltech\file.txt', kus kõiki sümboleid tõlgendatakse otseselt (raw string).
+
+- mode - tähistab, mida tuleb antud failiga teha. Vaikimisi on selle väärtuseks r ehk read. Muud võimalikud väärtused:
+
+  r ehk read - faili sisu lugemine;
+  w ehk write - faili kirjutamine. Selle režiimiga kaasneb faili sisu üle kirjutamine;
+  a ehk append - faili kirjutamine ilma eelneva sisu üle kirjutamata. Uus sisu lisatakse faili lõppu;
+  r+ ehk read/write - faili lugemine ja muutmine. Kirjutab eelmist sisu üle;
+  a+ ehk append and read - faili lugemine ja uue sisu lisamine. Ei kirjuta eelmist sisu üle.
+
+open() tagastab faili objekti (file object), millest (millesse) edasi saab lugeda (kirjutada) andmeid.
 
 ### Failist lugemine
-...
+Nüüd, kui fail sai avatud, saame hakata tegelema selle sisu lugemisega. Failist lugemine on võimalik järgmistel viisidel:
+- read(size) - loeb sisse size baiti (sümbolit) ning tagastab need. Juhul, kui size pole määratud, loeb terve faili sisu.
+```python
+file_object = open('example.txt', 'r')  # Avame faili lugemiseks
+print(file_object.read())  # Loeme terve faili sisu
+
+file_object.seek(0)  # Tagasi faili algusesse (sellest on juttu allpool)
+
+print(file_object.read(5))  # Loeme esimesed 5 baiti
+print(file_object.read(5))  # Loeme järgmised 5 baiti
+
+```
+
+
 
 ### Faili kirjutamine
 ...
