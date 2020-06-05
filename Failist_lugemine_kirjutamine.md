@@ -1,6 +1,11 @@
 ## Failist lugemine ja faili kirjutamine
 
 Kuidas toimub failide töötlemine Pythonis?
+Kujutame ette, et meil on olemas fail **_example.txt_** järgmise sisuga:
+```python
+Hello, World!
+Have a nice day.
+```
 
 ### Faili avamine
 Enne, kui hakkame tegelema faili sisu lugemise ja töötlemisega, peame faili avama. Pythonis on selle jaoks olemas sisseehitatud funktsioon open():
@@ -8,8 +13,9 @@ Enne, kui hakkame tegelema faili sisu lugemise ja töötlemisega, peame faili av
   file_object = open('filename', 'mode')
 ```
 
-- filename - tähistab faili nime koos tüübiga (extension). Meie näitefaili puhul oleks see 'example.txt', mitte ainult 'example'. On võimalik kasutada ka faili täispikka teekonna ('C:\directory\taltech\file.txt'). Täispikka teekonda on VAJA kasutada juhul kui fail ei ole samas kataloogis/kasutas kus su programm
-NB! Pyhtonis tähistab \ erisümboli algust. Antud näites oleks faili nimeks 'C:\directory altech\file.txt', kuna erisümbol \t tähistab TABi. Erisümbolite vältimiseks võib näiteks kasutada kahte kaldkriipsu 'C:\\directory\\taltech\\file.txt' või kasutada spetsiaalset flagi r'C:\directory\taltech\file.txt', kus kõiki sümboleid tõlgendatakse otseselt (raw string).
+- filename - tähistab faili nime koos tüübiga (extension). Meie näitefaili puhul oleks see 'example.txt', mitte ainult 'example'. On võimalik kasutada ka faili täispikka teekonna ('C:\directory\taltech\file.txt'). 
+NB! Täispikka teekonda on VAJA kasutada juhul, kui fail ei ole samas kataloogis (eng.k *directory*), kus programm, mis seda faili küsib.
+NB!! Pyhtonis tähistab \ erisümboli algust. Antud näites oleks faili nimeks 'C:\directory altech\file.txt', kuna erisümbol \t tähistab TABi. Erisümbolite vältimiseks võib näiteks kasutada kahte kaldkriipsu 'C:\\directory\\taltech\\file.txt' või kasutada spetsiaalset flagi r'C:\directory\taltech\file.txt', kus kõiki sümboleid tõlgendatakse otseselt (raw string).
 
 - mode - tähistab, mida tuleb antud failiga teha. Vaikimisi on selle väärtuseks r ehk read. Muud võimalikud väärtused:
 
@@ -23,7 +29,8 @@ open() tagastab faili objekti (file object), millest (millesse) edasi saab luged
 
 ### Failist lugemine
 Nüüd, kui fail sai avatud, saame hakata tegelema selle sisu lugemisega. Failist lugemine on võimalik järgmistel viisidel:
-- read(size) - loeb sisse size baiti (sümbolit) ning tagastab need. Juhul, kui size pole määratud, loeb terve faili sisu.
+
+- **read(size)** - loeb sisse size baiti (sümbolit) ning tagastab need. Juhul, kui size pole määratud, loeb terve faili sisu.
 ```python
 file_object = open('example.txt', 'r')  # Avame faili lugemiseks
 print(file_object.read())  # Loeme terve faili sisu
@@ -34,8 +41,51 @@ print(file_object.read(5))  # Loeme esimesed 5 baiti
 print(file_object.read(5))  # Loeme järgmised 5 baiti
 
 ```
+Väljund:
+```python
+Hello, World!
+Have a nice day.
 
+Hello
+, Wor
+```
 
+- **readline(size)** - kui size pole määratud, tagastab ühe rea, liikudes ülevalt alla (ehk esimesel kutsel tagastab esimese rida, teisel teise jne kuni faili lõpuni). Vastasel juhul tagastab järgmised size baiti.
+```python
+file_object = open('example.txt', 'r')
+
+print(file_object.readline())
+print(file_object.readline(5))
+```
+Väljund:
+```python
+Hello, World!
+Have
+```
+
+- **readlines(hint)** - tagastab järjendi koos kõikide failis olevate ridadega. hint määrab, kui palju ridu tuleb järjendisse panna. Selle analoogiks võib kasutada ka list(file_object) kirjapilti, mis samuti tagastab järjendi koos kõikide ridadega.
+```python
+file_object = open('example.txt', 'r')
+
+print(file_object.readlines())
+```
+Väljund:
+```python
+['Hello, World!\n', 'Have a nice day.']
+```
+
+####LISAKS
+**Ridade itereerimine.** - kõiki ridu saab kätte ka tavalise itereerimise kaudu.
+```python
+file_object = open('example.txt', 'r')
+for line in file_object:
+    print(line)
+```
+Väljund:
+```python
+Hello, World!
+Have a nice day.
+```
 
 ### Faili kirjutamine
 ...
@@ -47,7 +97,7 @@ print(file_object.read(5))  # Loeme järgmised 5 baiti
 
 - [Tekstifailist lugemine (PyDoc)](https://ained.ttu.ee/pydoc/read_from_file.html)
 - [Tekstifaili kirjutamine (PyDoc)](https://ained.ttu.ee/pydoc/write_to_file.html)
-- [Sõnastik(dict) (PyDoc)](https://ained.ttu.ee/pydoc/dict.html)]
+- [Sõnastik(dict) (PyDoc)](https://ained.ttu.ee/pydoc/dict.html)
 
 ## Ülesanne
 Selles ülesandes tuleb nii lugeda kui ka kirjutada faili...
